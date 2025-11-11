@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-12">
-            <table>
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th>Sr No</th>
@@ -33,26 +33,27 @@
         New Employee
       </div>
       <div class="card-body">
-        <div class="row">
+        <form [formGroup]="employeeForm">
+          <div class="row">
           <div class="col-6">
             <label for="">Name</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="name">
           </div>
              <div class="col-6">
             <label for="">Email-Id</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="Email-Id">
           </div>
              <div class="col-6">
             <label for="">Contact No</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="Contact-No">
           </div>
              <div class="col-6">
-            <label for="">Name</label>
-            <input type="text" class="form-control">
+            <label for="">State</label>
+            <input type="text" class="form-control" formControlName="state">
           </div>
              <div class="col-6">
             <label for="">City</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="city">
           </div>
              <div class="col-6">
             <label for="">Name</label>
@@ -60,20 +61,30 @@
           </div>
              <div class="col-6">
             <label for="">State</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="state">
           </div>
-              <div class="col-6">
+              <div class="col-12">
             <label for="">Address</label>
-            <input type="text" class="form-control">
+            <textarea name="" id="" class="form-control" formControlName="address"></textarea>
           </div>
               <div class="col-6">
             <label for="">PinCode</label>
-            <textarea name="" id="" class="form-control"></textarea>
+            <textarea name="" id="" class="form-control" formControlName="PinCode"></textarea>
           </div>
-            
-             
-          
         </div>
+        <div class="row pt-2">
+           <div class="col-6 text-center">
+            <button class="btn btn-secondary">Reset</button>
+
+           </div>
+           <div class="col-6 text-center">
+            <button class="btn btn-success " (click)="onSave()">Save Employee</button>
+
+           </div>
+        </div>
+
+        </form>
+        
       </div>
     </div>
   </div>
