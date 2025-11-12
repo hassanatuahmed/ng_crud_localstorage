@@ -14,10 +14,23 @@
                   <th>Name</th>
                   <th>Conact No</th>
                   <th>Email-Id</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                
+                @for(item of employeeList; track $index){
+                <tr>
+                  <td>{{$index+1}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.contactNo}}</td>
+                  <td>{{item.emailId}}</td>
+                  <td class="text-center">
+                    <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                    <button class="btn btn-danger mx-3" (click)="onDelete(item.employeeId)" type="button">Delete</button>
+                  </td>
+                </tr>
+                }
+
               </tbody>
             </table>
           </div>
@@ -35,56 +48,67 @@
       <div class="card-body">
         <form [formGroup]="employeeForm">
           <div class="row">
-          <div class="col-6">
-            <label for="">Name</label>
-            <input type="text" class="form-control" formControlName="name">
-          </div>
-             <div class="col-6">
-            <label for="">Email-Id</label>
-            <input type="text" class="form-control" formControlName="Email-Id">
-          </div>
-             <div class="col-6">
-            <label for="">Contact No</label>
-            <input type="text" class="form-control" formControlName="Contact-No">
-          </div>
-             <div class="col-6">
-            <label for="">State</label>
-            <input type="text" class="form-control" formControlName="state">
-          </div>
-             <div class="col-6">
-            <label for="">City</label>
-            <input type="text" class="form-control" formControlName="city">
-          </div>
-             <div class="col-6">
-            <label for="">Name</label>
-            <input type="text" class="form-control">
-          </div>
-             <div class="col-6">
-            <label for="">State</label>
-            <input type="text" class="form-control" formControlName="state">
-          </div>
-              <div class="col-12">
-            <label for="">Address</label>
-            <textarea name="" id="" class="form-control" formControlName="address"></textarea>
-          </div>
-              <div class="col-6">
-            <label for="">PinCode</label>
-            <textarea name="" id="" class="form-control" formControlName="PinCode"></textarea>
-          </div>
-        </div>
-        <div class="row pt-2">
-           <div class="col-6 text-center">
-            <button class="btn btn-secondary">Reset</button>
+            <div class="col-6">
+              <label for="">Name</label>
+              <input type="text" class="form-control" formControlName="name">
+              <div>
+                @if(employeeForm.controls['name'].touched){
+                  @if(employeeForm.controls['name'].errors?.['required']){
+                    <span>Name is required</span>
+                  }
+                }
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="">Email-Id</label>
+              <input type="text" class="form-control" formControlName="emailId">
+            </div>
+            <div class="col-6">
+              <label for="">Contact No</label>
+              <input type="text" class="form-control" formControlName="contactNo">
+            </div>
+            <div class="col-6">
+              <label for="">State</label>
+              <input type="text" class="form-control" formControlName="state">
+            </div>
+            <div class="col-6">
+              <label for="">City</label>
+              <input type="text" class="form-control" formControlName="city">
+            </div>
 
-           </div>
-           <div class="col-6 text-center">
-            <button class="btn btn-success " (click)="onSave()">Save Employee</button>
+            <div class="col-6">
+              <label for="">State</label>
+              <input type="text" class="form-control" formControlName="state">
+            </div>
+            <div class="col-12">
+              <label for="">Address</label>
+              <textarea name="" id="" class="form-control" formControlName="address"></textarea>
+            </div>
+            <div class="col-6">
+              <label for="">PinCode</label>
+              <textarea name="" id="" class="form-control" formControlName="pinCode"></textarea>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-6 text-center">
+              <button class="btn btn-secondary" (click)="reset()" type="reset">Reset</button>
 
-           </div>
-        </div>
+            </div>
+            <div class="col-6 text-center">
+              @if(!isEditMode){
+              <button class="btn btn-success "  (click)="onSave()" type="button">Save Employee</button>
+
+              }@else{
+              <button class="btn btn-warning " (click)="onUpdate()" type="button">Update Employee</button>
+
+              }
+
+
+            </div>
+          </div>
 
         </form>
-        
+
       </div>
     </div>
   </div>

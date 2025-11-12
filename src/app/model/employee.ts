@@ -14,7 +14,7 @@ constructor(){
     this.emailId = '';
     this.name = '';
     this.state = '';
-    this.employeeId = 0;
+    this.employeeId = 1;
     this.pinCode='';
 }
 }
