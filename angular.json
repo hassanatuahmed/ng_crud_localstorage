@@ -22,8 +22,11 @@
               }
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "@taiga-ui/core/styles/taiga-ui-theme.less",
+              "@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less"
             ]
           },
           "configurations": {
@@ -45,7 +48,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,9 +85,11 @@
               }
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-
-              "src/styles.css"
+              "/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "@taiga-ui/core/styles/taiga-ui-theme.less",
+              "@taiga-ui/core/styles/taiga-ui-fonts.less",
+              "@taiga-ui/addon-mobile/styles/taiga-ui-mobile.less"
             ]
           }
         }
